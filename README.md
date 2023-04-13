@@ -1,5 +1,17 @@
 # Variables-Conditions-Tags
 
+# Expected result yaml
+Main branch
+![image](https://user-images.githubusercontent.com/108743499/231871665-83a1b473-e601-4325-bac5-1240be2ca94f.png)
+QA branch
+![image](https://user-images.githubusercontent.com/108743499/231871778-1515f26f-b784-496f-ae2b-bb52496f768c.png)
+Production branch
+![image](https://user-images.githubusercontent.com/108743499/231872354-f8a272e7-6689-4ce6-93e4-35eef554ddc7.png)
+
+
+# Release
+
+
 If you need to use Artifact filters in your pipeline to make the deploy easier to te slot please follow the next steps
 
 1- Go to https://dev.azure.com/{Your_Organization}/{Your_Project}/_release
