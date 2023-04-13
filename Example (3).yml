@@ -1,0 +1,21 @@
+trigger:
+  branches:
+    include:
+    - main
+    - Production
+    - QA
+variables:
+- name: slotTarget
+  value: 'QA'
+stages:
+- stage: __default
+  jobs:
+  - job: Job
+    pool:
+      vmImage: windows-latest
+    steps:
+    - task: PowerShell@2
+      inputs:
+        targetType: 'inline'
+        script: 'Write-Host "##vso[build.addbuildtag]$(slotTarget)"'
+
