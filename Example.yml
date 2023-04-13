@@ -1,21 +1,29 @@
-trigger:
-  branches:
-    include:
-    - main
-    - Production
-    - QA
-variables:
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger: #The branches 
+- main
+- Production
+- QA
+
+pool: #Recomended pool in case you use powershell
+  vmImage: windows-latest
+
+variables: #Create a variable with the name, example: slotTarget
 - name: slotTarget
-  value: 'QA'
-stages:
-- stage: __default
-  jobs:
-  - job: Job
-    pool:
-      vmImage: windows-latest
-    steps:
-    - task: PowerShell@2
-      inputs:
-        targetType: 'inline'
-        script: 'Write-Host "##vso[build.addbuildtag]$(slotTarget)"'
+  ${{ if eq(variables['Build.SourceBranchName'], 'main') }} : #If is main the value of the variable will be main
+    value: 'main'
+  ${{ elseif eq(variables['Build.SourceBranchName'], 'Production') }} : #If is Production the value of the variable will be Production
+    value: 'Production'   
+  ${{ else }} :  #If is not  main or Production the value of the variable will be QA
+    value: 'QA'
+
+steps:
+
+- task: PowerShell@2 #Task to deploy the variable to the tags in the pipeline in order to use it in the Releases
+  inputs:
+    targetType: 'inline'
+    script: 'Write-Host "##vso[build.addbuildtag]$(slotTarget)"'    
 
