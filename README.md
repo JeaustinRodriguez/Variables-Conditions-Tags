@@ -31,11 +31,9 @@ If you need to use Artifact filters in your pipeline to make the deploy easier t
  6- Make the some process in the others Stages and then based in the artifact filter select the slot to deploy the artifact 
  
   6.1 Go to the stage and click in the view stage task
-  
       ![image](https://user-images.githubusercontent.com/108743499/231869016-50b19cbe-b2a6-4def-81e7-8bc37f59026e.png)
   
   6.2 Go to your deploy task and select your slot 
-  
       ![image](https://user-images.githubusercontent.com/108743499/231869203-0e78dbc3-a4ac-4b05-85d9-1c6be2a7e518.png)
       
 7- Save the release in the top right corner 
